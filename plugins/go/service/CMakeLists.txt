@@ -38,4 +38,4 @@ target_link_libraries(goservice
   ${ODB_LIBRARIES}
   gothrift)
 
-install(TARGETS dummyservice DESTINATION ${INSTALL_SERVICE_DIR})
+install(TARGETS goservice DESTINATION ${INSTALL_SERVICE_DIR})
