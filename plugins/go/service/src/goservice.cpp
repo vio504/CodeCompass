@@ -1,14 +1,14 @@
-#include <service/dummyservice.h>
+#include <service/goservice.h>
 #include <util/dbutil.h>
 
 namespace cc
 {
 namespace service
 {
-namespace dummy
+namespace go
 {
 
-DummyServiceHandler::DummyServiceHandler(
+GoServiceHandler::GoServiceHandler(
   std::shared_ptr<odb::database> db_,
   std::shared_ptr<std::string> /*datadir_*/,
   const cc::webserver::ServerContext& context_)
@@ -16,11 +16,11 @@ DummyServiceHandler::DummyServiceHandler(
 {
 }
 
-void DummyServiceHandler::getDummyString(std::string& str_)
+void GoServiceHandler::getHelloWorld(std::string& str_)
 {
-  str_ = _config["dummy-result"].as<std::string>();
+  str_ = _config["go-result"].as<std::string>();
 }
 
-} // dummy
+} // go 
 } // service
 } // cc

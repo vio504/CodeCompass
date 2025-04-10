@@ -1,5 +1,5 @@
-#ifndef CC_SERVICE_DUMMY_DUMMYSSERVICE_H
-#define CC_SERVICE_DUMMY_DUMMYSSERVICE_H
+#ifndef CC_SERVICE_GO_GOSERVICE_H
+#define CC_SERVICE_GO_GOSERVICE_H
 
 #include <memory>
 #include <vector>
@@ -10,24 +10,24 @@
 #include <util/odbtransaction.h>
 #include <webserver/servercontext.h>
 
-#include <DummyService.h>
+#include <GoService.h>
 
 namespace cc
 {
 namespace service
 {
-namespace dummy
+namespace go
 {
 
-class DummyServiceHandler : virtual public DummyServiceIf
+class GoServiceHandler : virtual public GoServiceIf
 {
 public:
-  DummyServiceHandler(
+  GoServiceHandler(
     std::shared_ptr<odb::database> db_,
     std::shared_ptr<std::string> datadir_,
     const cc::webserver::ServerContext& context_);
 
-  void getDummyString(std::string& str_);
+  void getHelloWorld(std::string& str_);
 
 private:
   std::shared_ptr<odb::database> _db;
@@ -36,8 +36,8 @@ private:
   const boost::program_options::variables_map& _config;
 };
 
-} // dummy
+} // go
 } // service
 } // cc
 
-#endif // CC_SERVICE_DUMMY_DUMMYSSERVICE_H
+#endif // CC_SERVICE_GO_GOSERVICE_H

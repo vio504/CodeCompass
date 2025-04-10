@@ -1,6 +1,6 @@
 #include <webserver/pluginhelper.h>
 
-#include <service/dummyservice.h>
+#include <service/goservice.h>
 
 /* These two methods are used by the plugin manager to allow dynamic loading
    of CodeCompass Service plugins. Clang (>= version 6.0) gives a warning that
@@ -20,11 +20,11 @@ extern "C"
   {
     namespace po = boost::program_options;
 
-    po::options_description description("Dummy Plugin");
+    po::options_description description("Go Plugin");
 
     description.add_options()
-      ("dummy-result", po::value<std::string>()->default_value("Dummy result"),
-        "This value will be returned by the dummy service.");
+      ("go-result", po::value<std::string>()->default_value("Go result"),
+        "This value will be returned by the go service.");
 
     return description;
   }
@@ -36,8 +36,8 @@ extern "C"
     cc::webserver::registerPluginSimple(
       context_,
       pluginHandler_,
-      CODECOMPASS_SERVICE_FACTORY_WITH_CFG(Dummy, dummy),
-      "DummyService");
+      CODECOMPASS_SERVICE_FACTORY_WITH_CFG(Go, go),
+      "GoService");
   }
 }
-#pragma clang diagnostic pop
+#pragma clang diagnostic popclear

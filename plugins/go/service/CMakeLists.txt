@@ -9,33 +9,33 @@ include_directories(SYSTEM
 
 add_custom_command(
   OUTPUT
-    ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/DummyService.cpp
-    ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/DummyService.h
+    ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/GoService.cpp
+    ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/GoService.h
     ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp
   COMMAND
     ${THRIFT_EXECUTABLE} --gen cpp
       -o ${CMAKE_CURRENT_BINARY_DIR}
-      ${CMAKE_CURRENT_SOURCE_DIR}/dummy.thrift
+      ${CMAKE_CURRENT_SOURCE_DIR}/go.thrift
   DEPENDS
-    ${CMAKE_CURRENT_SOURCE_DIR}/dummy.thrift
+    ${CMAKE_CURRENT_SOURCE_DIR}/go.thrift
   COMMENT
-    "Generating Thrift for dummy.thrift")
+    "Generating Thrift for go.thrift")
 
-add_library(dummythrift STATIC
-  ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/DummyService.cpp)
+add_library(gothrift STATIC
+  ${CMAKE_CURRENT_BINARY_DIR}/gen-cpp/GoService.cpp)
 
-target_compile_options(dummythrift PUBLIC -fPIC)
+target_compile_options(gothrift PUBLIC -fPIC)
 
-add_library(dummyservice SHARED
-  src/dummyservice.cpp
+add_library(goservice SHARED
+  src/goservice.cpp
   src/plugin.cpp)
 
-target_compile_options(dummyservice PUBLIC -Wno-unknown-pragmas)
+target_compile_options(goservice PUBLIC -Wno-unknown-pragmas)
 
-target_link_libraries(dummyservice
+target_link_libraries(goservice
   util
   ${THRIFT_LIBTHRIFT_LIBRARIES}
   ${ODB_LIBRARIES}
-  dummythrift)
+  gothrift)
 
 install(TARGETS dummyservice DESTINATION ${INSTALL_SERVICE_DIR})
