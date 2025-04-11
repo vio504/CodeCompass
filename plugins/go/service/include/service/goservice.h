@@ -1,5 +1,5 @@
-#ifndef CC_SERVICE_GO_GOSERVICE_H
-#define CC_SERVICE_GO_GOSERVICE_H
+#ifndef CC_SERVICE_LANGUAGE_GOSERVICE_H
+#define CC_SERVICE_LANGUAGE_GOSERVICE_H
 
 #include <memory>
 #include <vector>
@@ -11,6 +11,7 @@
 #include <webserver/servercontext.h>
 
 #include <GoService.h>
+
 
 namespace cc
 {
