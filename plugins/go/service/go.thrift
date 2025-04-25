@@ -3,5 +3,5 @@ namespace java cc.service.go
 
 service GoService
 {
-  string getHelloWorld()
+  string getGoString()
 }
